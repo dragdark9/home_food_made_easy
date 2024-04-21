@@ -1,36 +1,14 @@
 import 'package:flutter/material.dart';
-import 'recipe_page.dart';
 
-class ThirdStepPage extends StatelessWidget {
+class RecipePage extends StatelessWidget {
+  final String title;
+  final String time;
+
+   // Constructor
+  RecipePage({Key? key, required this.title, required this.time}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> recipes = [
-    // THIS IS ALL PLACEHOLDER
-    ListTile(
-      title: Text('Francesinha à moda do Porto'), 
-      trailing: Text('20 min.'),
-      onTap: () {
-            // Use Navigator to push the SecondPage to the stack
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => RecipePage(title: 'Francesinha à moda do Porto', time: '20min')),
-          );
-        },
-      ),
-    ListTile(
-      title: Text('Francesinha à moda de Braga'), 
-      trailing: Text('20 min.'),
-      onTap: () {
-            // Use Navigator to push the SecondPage to the stack
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => RecipePage(title: 'Francesinha à moda de Braga', time: '20min')),
-          );
-        },
-      ),
-  ];
-
     return Scaffold(
       body: Column(
         children: <Widget>[
@@ -63,22 +41,11 @@ class ThirdStepPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   // Title
-                  const Text(
-                    'Step 3 of 3',
-                    style: TextStyle(
+                  Text(
+                    title,
+                    style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  // Subtitle
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(8.0,8.0,8.0,30.0),
-                    child: Text(
-                      'Choose your recipe!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
                     ),
                   ),
                   Expanded(
@@ -86,9 +53,7 @@ class ThirdStepPage extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 20.0),
                       child: Container(
                       decoration: BoxDecoration(border: Border.all(color: Colors.teal)),
-                      child: ListView(
-                        children: recipes,
-                      )
+                      child: Text('Food'),
                   ),),
                   ),
                   // Buttons
