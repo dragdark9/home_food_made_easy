@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'second_step_page.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
+import 'dart:io';
+import 'dart:convert';
 
 class FirstStepPage extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,11 +56,14 @@ class FirstStepPage extends StatelessWidget {
                     ),
                   ),
                   FloatingActionButton(
-                    onPressed: () {
-                      // Add your onPressed code here!
+                    onPressed: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ImageCapturePage()),
+                      );
                     },
                     child: Icon(Icons.camera_alt),
-                    backgroundColor: Colors.teal,
+                    backgroundColor: Colors.white,
                   ),
                   Container(
                     margin: const EdgeInsets.fromLTRB(36.0, 0.0, 26.0, 0.0),
@@ -125,3 +133,61 @@ class FirstStepPage extends StatelessWidget {
     );
   }
 }
+
+
+class ImageCapturePage extends StatefulWidget {
+  @override
+  _ImageCapturePageState createState() => _ImageCapturePageState();
+}
+
+class _ImageCapturePageState extends State<ImageCapturePage> {
+  final ImagePicker _picker = ImagePicker();
+  String _rgbValue = "No image analyzed yet";
+
+  Future<void> _takePicture() async {
+    final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
+    if (photo != null) {
+      await _sendImage(photo.path);
+    }
+  }
+
+  Future<void> _sendImage(String path) async {
+    var uri = Uri.parse('http://172.0.0.1:5000/api/analyze');
+    var request = http.MultipartRequest('POST', uri)
+      ..files.add(await http.MultipartFile.fromPath('picture', path));
+    var response = await request.send();
+
+    if (response.statusCode == 200) {
+      response.stream.bytesToString().then((value) {
+        setState(() {
+          _rgbValue =
+              "RGB Value at (0,0): ${json.decode(value)['rgb'].toString()}";
+        });
+      });
+    } else {
+      setState(() {
+        _rgbValue = "Failed to analyze image";
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              onPressed: _takePicture,
+              child: Text('Take Picture'),
+            ),
+            SizedBox(height: 20),
+            Text(_rgbValue),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
