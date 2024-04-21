@@ -1,11 +1,31 @@
 import 'package:flutter/material.dart';
 
 class SecondStepPage extends StatelessWidget {
+  final List<Widget> foodItems = [
+    // THIS IS ALL PLACEHOLDER
+    ListTile(title: Text('Salpicão'), trailing: Text('x 1'),),
+    ListTile(title: Text('Ovo'), trailing: Text('x 6'),),
+    ListTile(title: Text('Pão de forma'), trailing: Text('x 1'),),
+    ListTile(title: Text('Salpicão'), trailing: Text('x 1'),),
+    ListTile(title: Text('Ovo'), trailing: Text('x 6'),),
+    ListTile(title: Text('Pão de forma'), trailing: Text('x 1'),),
+    ListTile(title: Text('Salpicão'), trailing: Text('x 1'),),
+    ListTile(title: Text('Ovo'), trailing: Text('x 6'),),
+    ListTile(title: Text('Pão de forma'), trailing: Text('x 1'),),
+    ListTile(title: Text('Salpicão'), trailing: Text('x 1'),),
+    ListTile(title: Text('Ovo'), trailing: Text('x 6'),),
+    ListTile(title: Text('Pão de forma'), trailing: Text('x 1'),),
+    ListTile(title: Text('Salpicão'), trailing: Text('x 1'),),
+    ListTile(title: Text('Ovo'), trailing: Text('x 6'),),
+    ListTile(title: Text('Pão de forma'), trailing: Text('x 1'),),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: <Widget>[
+          // Header 
           Container(
             padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width/4, 16.0, MediaQuery.of(context).size.width/4, 16.0),
             decoration: BoxDecoration(
@@ -26,6 +46,7 @@ class SecondStepPage extends StatelessWidget {
               ),
             ),
           ),
+          // Body and buttons
           Expanded(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(0.0, 60.0, 0.0, 0.0),
@@ -42,7 +63,7 @@ class SecondStepPage extends StatelessWidget {
                   ),
                   // Subtitle
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(8.0,8.0,8.0,70.0),
+                    padding: EdgeInsets.fromLTRB(8.0,8.0,8.0,30.0),
                     child: Text(
                       'Check your food and validate the given list',
                       textAlign: TextAlign.center,
@@ -50,6 +71,17 @@ class SecondStepPage extends StatelessWidget {
                         fontSize: 18,
                       ),
                     ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 20.0),
+                      child: Container(
+                      decoration: BoxDecoration(border: Border.all(color: Colors.teal)),
+                      child: ListView(
+                        
+                        children: foodItems,
+                      )
+                  ),),
                   ),
                   // Buttons
                   Padding(
@@ -104,3 +136,4 @@ class SecondStepPage extends StatelessWidget {
     );
   }
 }
+
