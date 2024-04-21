@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
-import 'third_step_page.dart';
 
-class SecondStepPage extends StatelessWidget {
-  final List<Widget> foodItems = [
+class ThirdStepPage extends StatelessWidget {
+  final List<Widget> recipes = [
     // THIS IS ALL PLACEHOLDER
-    ListTile(title: Text('Salpicão'), trailing: Text('x 1'),),
-    ListTile(title: Text('Ovo'), trailing: Text('x 6'),),
-    ListTile(title: Text('Pão de forma'), trailing: Text('x 1'),),
-    ListTile(title: Text('Salpicão'), trailing: Text('x 1'),),
-    ListTile(title: Text('Ovo'), trailing: Text('x 6'),),
-    ListTile(title: Text('Pão de forma'), trailing: Text('x 1'),),
-    ListTile(title: Text('Salpicão'), trailing: Text('x 1'),),
-    ListTile(title: Text('Ovo'), trailing: Text('x 6'),),
-    ListTile(title: Text('Pão de forma'), trailing: Text('x 1'),),
-    ListTile(title: Text('Salpicão'), trailing: Text('x 1'),),
-    ListTile(title: Text('Ovo'), trailing: Text('x 6'),),
-    ListTile(title: Text('Pão de forma'), trailing: Text('x 1'),),
-    ListTile(title: Text('Salpicão'), trailing: Text('x 1'),),
-    ListTile(title: Text('Ovo'), trailing: Text('x 6'),),
-    ListTile(title: Text('Pão de forma'), trailing: Text('x 1'),),
+    ListTile(title: Text('Francesinha à moda do Porto'), trailing: Text('20 min.'),),
+    ListTile(title: Text('Francesinha à moda de Braga'), trailing: Text('20 min.'),),
   ];
 
   @override
@@ -56,7 +42,7 @@ class SecondStepPage extends StatelessWidget {
                 children: <Widget>[
                   // Title
                   const Text(
-                    'Step 2 of 3',
+                    'Step 3 of 3',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -66,7 +52,7 @@ class SecondStepPage extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.fromLTRB(8.0,8.0,8.0,30.0),
                     child: Text(
-                      'Check your food and validate the given list',
+                      'Choose your recipe',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18,
@@ -79,38 +65,11 @@ class SecondStepPage extends StatelessWidget {
                       child: Container(
                       decoration: BoxDecoration(border: Border.all(color: Colors.teal)),
                       child: ListView(
-                        
-                        children: foodItems,
+                        children: recipes,
                       )
                   ),),
                   ),
                   // Buttons
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width/2,
-                      child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ThirdStepPage()),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal, // background color
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12), // Adjust border radius here
-                        ),
-                      ),
-                      child: const Text(
-                        'Continue',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      ),
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     child: TextButton(
