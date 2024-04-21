@@ -40,21 +40,55 @@ class RecipePage extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  // Title
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+                  Container(
+                    color: Colors.teal[50],
+                    width: double.infinity,
+                    padding: EdgeInsets.all(16.0),
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
                     ),
                   ),
                   Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 20.0),
-                      child: Container(
-                      decoration: BoxDecoration(border: Border.all(color: Colors.teal)),
-                      child: Text('Food'),
-                  ),),
+                    child: SingleChildScrollView(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/images/francesinha.jpeg', // Replace with your image asset path
+                            height: 200, // Adjust the size accordingly
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                          SizedBox(height: 16),
+                          Text(
+                            'Ingredients:',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          Text(
+                            'Pão de forma',
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Text(
+                            '(1) Lorem ipsum dolor sit amet consectetur.\n(2) Egestas ultrices sed ullamcorper dictum vestibulum vitae eleifend cras. Sapientincidunt iaculis at nam. In et elementum etiam est maecenas egestas anean gravida. Pellentesque aliquam aenean suspendisse sed.',
+                            style: TextStyle(
+                              color: Colors.black54,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   // Buttons
                   Padding(
