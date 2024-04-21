@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'second_step_page.dart';
 
-class FirstStepPage extends StatelessWidget {
+class SecondStepPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,53 +32,33 @@ class FirstStepPage extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
+                  // Title
                   const Text(
-                    'Step 1 of 3',
+                    'Step 2 of 3',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  // Subtitle
                   const Padding(
                     padding: EdgeInsets.fromLTRB(8.0,8.0,8.0,70.0),
                     child: Text(
-                      'Take a picture of your food',
+                      'Check your food and validate the given list',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18,
                       ),
                     ),
                   ),
-                  FloatingActionButton(
-                    onPressed: () {
-                      // Add your onPressed code here!
-                    },
-                    child: Icon(Icons.camera_alt),
-                    backgroundColor: Colors.teal,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(36.0, 0.0, 26.0, 0.0),
-                    child: const Padding(
-                    padding: EdgeInsets.fromLTRB(16.0,60.0,16.0,16.0),
-                    child: Text(
-                      'Tips:\n1. Try to keep all the products in frame\n2. Don\'t include other objects\n3. Go to a well light area for a better picture quality',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.black54,
-                      ),
-                    ),
-                  ),),
+                  // Buttons
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width/2,
                       child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SecondStepPage()),
-                        );
+                        // Navigate to next step
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.teal, // background color
