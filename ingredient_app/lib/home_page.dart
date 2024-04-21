@@ -5,7 +5,29 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Stack(
+        children: <Widget>[
+        Container(
+          decoration: const BoxDecoration(
+            color: Colors.transparent,
+            image: DecorationImage(
+              image: AssetImage("assets/images/background-image.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            colors: [
+              Colors.black.withOpacity(0.5),
+              Colors.transparent,
+            ],
+          ),),
+        ),
+        Column(
         children: <Widget>[
           Expanded(
             child: Center(
@@ -19,15 +41,17 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(8.0,8.0,8.0,70.0),
+                    padding: EdgeInsets.fromLTRB(8.0,8.0,8.0,120.0),
                     child: Text(
                       'Find your perfect meal!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18,
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -40,7 +64,7 @@ class HomePage extends StatelessWidget {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.black54,
+                        color: Colors.white,
                       ),
                     ),
                   ),),
@@ -65,7 +89,7 @@ class HomePage extends StatelessWidget {
                       child: const Text(
                         'Start Cooking',
                         style: TextStyle(
-                          color: Colors.black54,
+                          color: Colors.white,
                         ),
                       ),
                       ),
@@ -76,7 +100,7 @@ class HomePage extends StatelessWidget {
             ),),
           ),
         ],
-      ),
-    );
+      ),],
+    ),);
   }
 }
