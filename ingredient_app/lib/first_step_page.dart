@@ -86,7 +86,7 @@ class FirstStepPage extends StatelessWidget {
                       child: const Text(
                         'Continue',
                         style: TextStyle(
-                          color: Colors.black54,
+                          color: Colors.white,
                         ),
                       ),
                       ),
@@ -107,7 +107,7 @@ class FirstStepPage extends StatelessWidget {
                       child: const Text(
                         'Back',
                         style: TextStyle(
-                          color: Colors.black54,
+                          color: Colors.white,
                         ),
                       ),
                     ),
